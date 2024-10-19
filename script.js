@@ -1,12 +1,18 @@
 // Making an array of the choices of the game and setting starting score variables of 0
-const arr = ["Rock", "Paper", "Scissors"];
+const arr = [
+    "Rock", 
+    "Paper", 
+    "Scissors"
+];
+const button = document.getElementById("btn");
+
 let humanScore = 0;
 let computerScore = 0;
 
 // This function makes a random choice and returns the choice
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * arr.length);
-    return arr[randomChoice]; // Return the computer's choice
+    return arr[randomChoice]; 
 }
 
 
@@ -15,7 +21,7 @@ function getComputerChoice() {
 function getHumanChoice(capitalzeInput) {
     let input = prompt("Rock Paper or Scissors");
 
-    // Convert the user's input to a choice based on the prompt
+
     if (input === "Rock") {
         return "Rock";
     } else if (input === "Paper") {
@@ -47,12 +53,15 @@ function playRound(humanChoice, computerChoice) {
         result = `Computer wins with ${computerChoice}`;
         computerScore++;
     }
-    // Print the current score
+
     document.getElementById('title').innerText = result;
+    document.getElementById('score').innerText = `Human ${humanScore} --  Computer ${computerScore}`
 }
 
 // Run the game
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection))
+
+playRound(humanSelection, computerSelection)
+

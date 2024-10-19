@@ -18,16 +18,16 @@ function getComputerChoice() {
 
 
 // This function gets a choice from the human and returns the choice
-function getHumanChoice(capitalzeInput) {
-    let input = prompt("Rock Paper or Scissors");
+function getHumanChoice() {
+    let humanInput = prompt("Rock Paper or Scissors");
 
 
-    if (input === "Rock") {
-        return "Rock";
-    } else if (input === "Paper") {
-        return "Paper";
-    } else if (input === "Scissors") {
-        return "Scissors";
+    if (humanInput === "Rock") {
+        return arr[0];
+    } else if (humanInput === "Paper") {
+        return arr[1];
+    } else if (humanInput === "Scissors") {
+        return arr[2];
     } else {
         console.log("Invalid choice. Please select 1, 2, or 3.");
         return null; // Return null for invalid input
@@ -63,5 +63,6 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 
-playRound(humanSelection, computerSelection)
-
+function play() {
+    return playRound(humanSelection, computerSelection)
+}

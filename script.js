@@ -8,6 +8,7 @@ const button = document.getElementById("btn");
 
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 
 // This function makes a random choice and returns the choice
 function getComputerChoice() {
@@ -39,7 +40,7 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
     
     if (humanChoice === computerChoice) {
-        result = `Tie`
+        result = "Tie"
     } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
         result = `${humanChoice} beats ${computerChoice} Human wins`
         humanScore++;
@@ -58,11 +59,31 @@ function playRound(humanChoice, computerChoice) {
     document.getElementById('score').innerText = `Human ${humanScore} --  Computer ${computerScore}`
 }
 
-// Run the game
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
 
-
-function play() {
-    return playRound(humanSelection, computerSelection)
+        if (humanChoice != null) {
+            playRound(humanChoice, computerChoice);
+        } else {
+            console.log('Game cancelled!\n\n');
+            i = 5; 
+        }  
+    }
+    reset();
 }
+
+function reset() {
+    humanScore = 0;
+    computerScore = 0;
+    roundCount = 0;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    let button = document.createElement("button");
+    button.textContent = "Start Game";
+    document.body.appendChild(button);
+
+    button.addEventListener("click", playGame);
+});
